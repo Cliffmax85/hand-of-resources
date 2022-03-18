@@ -11,4 +11,16 @@ describe('hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it('creates a sock', async () => {
+    const expected = {
+      brand: 'Gold toe',
+      condition: 'mostly useless',
+      isPaired: true,
+    };
+    const res = await request(app).post('/api/v1/socks').send(expected);
+    
+    expect(res.body).toEqual({
+      id: expect.any(String), ...expected })
+  })
 });

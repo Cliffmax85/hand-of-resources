@@ -6,7 +6,7 @@ CREATE TABLE socks (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     brand TEXT NOT NULL,
     condition TEXT NOT NULL,
-    is_paired BOOLEAN
+    is_paired BOOLEAN NOT NULL
 );
 
 INSERT INTO 
