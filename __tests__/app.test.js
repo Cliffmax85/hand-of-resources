@@ -50,4 +50,12 @@ describe('hand-of-resources routes', () => {
       .send({ condition: 'whack' });
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes a sock based on id', async () => {
+    const expected = await Sock.findById(1);
+    const res = await request(app).delete(`/api/v1/socks/${expected.id}`);
+    expect(res.body).toEqual(expected); 
+  });
+
+  
 });
