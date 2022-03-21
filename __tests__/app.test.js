@@ -110,6 +110,19 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('updates a book based on id', async () => {
+    const expected = {
+      id: expect.any(String),
+      title: 'star trek wars',
+      pages: 101010
+    };
+    console.log(expected);
+    const res = await request(app)
+      .patch('/api/v1/books/2')
+      .send({ pages: 101010 });
+    expect(res.body).toEqual(expected);
+  })
+
   it('deletes a sock based on id', async () => {
     const expected = await Sock.findById(1);
     const res = await request(app).delete(`/api/v1/socks/${expected.id}`);
