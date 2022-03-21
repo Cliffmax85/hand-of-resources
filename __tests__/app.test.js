@@ -46,6 +46,17 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected })
   });
 
+  it('creates a card', async () => {
+    const expected = {
+      value: 'Q',
+      color: 'red',
+    };
+    const res = await request(app)
+      .post('/api/v1/cards')
+      .send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected })
+  });
+
   it('gets a list of socks', async () => {
     const expected = await Sock.findAll();
     const res = await request(app).get('/api/v1/socks');
