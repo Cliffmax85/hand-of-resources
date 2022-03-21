@@ -3,6 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Sock = require('../lib/models/Sock');
+const Game = require('../lib/models/Game');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -40,6 +41,12 @@ describe('hand-of-resources routes', () => {
   it('gets a list of socks', async () => {
     const expected = await Sock.findAll();
     const res = await request(app).get('/api/v1/socks');
+    expect(res.body).toEqual(expected);
+  });
+
+  it('gets a list of games', async () => {
+    const expected = await Game.findAll();
+    const res = await request(app).get('/api/v1/games');
     expect(res.body).toEqual(expected);
   });
 
