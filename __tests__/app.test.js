@@ -60,6 +60,18 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected })
   });
 
+  it('creates a fish', async () => {
+    const expected = {
+      name: 'fly',
+      type: 'green',
+    };
+    const res = await request(app)
+      .post('/api/v1/fish')
+      .send(expected);
+    
+    expect(res.body).toEqual({ id: expect.any(String), ...expected })
+  });
+
   it('gets a list of socks', async () => {
     const expected = await Sock.findAll();
     const res = await request(app).get('/api/v1/socks');
@@ -97,6 +109,12 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ ...expected });
   });
 
+  it('gets a fish by id', async () => {
+    const expected = await Fish.findById(2);
+    const res = await request(app).get(`/api/v1/fish/${expected.id}`);
+    expect(res.body).toEqual({ ...expected });
+  });
+
   it('gets a game by id', async () => {
     const expected = await Game.findById(2);
     const res = await request(app).get(`/api/v1/games/${expected.id}`);
@@ -130,6 +148,8 @@ describe('hand-of-resources routes', () => {
       .send({ condition: 'whack' });
     expect(res.body).toEqual(expected);
   });
+
+  
 
   it('updates a game based on id', async () => {
     const expected = {
