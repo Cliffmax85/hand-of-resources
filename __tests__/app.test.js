@@ -135,5 +135,11 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('deletes a game based on id', async () => {
+    const expected = await Book.findById(2);
+    const res = await request(app).delete(`/api/v1/books/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  })
+
 
 });
