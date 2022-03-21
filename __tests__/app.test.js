@@ -159,7 +159,7 @@ describe('hand-of-resources routes', () => {
       .send({ color: 'pink' });
     expect(res.body).toEqual(expected);
   });
-  
+
   it('deletes a sock based on id', async () => {
     const expected = await Sock.findById(1);
     const res = await request(app).delete(`/api/v1/socks/${expected.id}`);
@@ -176,7 +176,11 @@ describe('hand-of-resources routes', () => {
     const expected = await Book.findById(2);
     const res = await request(app).delete(`/api/v1/books/${expected.id}`);
     expect(res.body).toEqual(expected);
-  })
+  });
 
-
+  it('deletes a card based on id', async () => {
+    const expected = await Card.findById(1);
+    const res = await request(app).delete(`/api/v1/cards/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
