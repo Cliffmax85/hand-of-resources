@@ -36,5 +36,18 @@ describe('hand-of-resources routes', () => {
     const res = await request.agent(app).get(`/api/v1/socks/${expected.id}`);
 
     expect(res.body).toEqual({ ...expected });
-  })
+  });
+
+  it('updates a sock by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      brand: 'kroger',
+      condition: 'whack',
+      isPaired: false
+    };
+    const res = await request(app)
+      .patch('/api/v1/socks/1')
+      .send({ condition: 'whack' });
+    expect(res.body).toEqual(expected);
+  });
 });

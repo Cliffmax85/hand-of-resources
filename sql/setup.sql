@@ -12,6 +12,6 @@ CREATE TABLE socks (
 INSERT INTO 
   socks (brand, condition, is_paired)
 VALUES
-  ('kroger', 'tattered', false),
+  ('kroger', 'fine', false),
   ('Champion', 'pristine', true),
   ('Victorias Secret', 'in ruins', false);
