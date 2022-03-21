@@ -76,6 +76,13 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get(`/api/v1/games/${expected.id}`);
 
     expect(res.body).toEqual({ ...expected });
+  });
+
+  it('gets a book by id', async () => {
+    const expected = await Book.findById(1);
+    const res = await request(app).get(`/api/v1/books/${expected.id}`);
+
+    expect(res.body).toEqual({ ...expected }); 
   })
 
   it('updates a sock by id', async () => {
