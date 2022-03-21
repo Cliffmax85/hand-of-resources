@@ -1,6 +1,6 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS socks, games, books, cards;
+DROP TABLE IF EXISTS socks, games, books, cards, fish;
 
 CREATE TABLE socks (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -26,6 +26,18 @@ CREATE TABLE cards (
   value TEXT NOT NULL,
   color TEXT NOT NULL
 );
+
+CREATE TABLE fish (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name TEXT NOT NULL,
+  type TEXT NOT NULL
+);
+
+INSERT INTO 
+  fish (name, type)
+VALUES
+  ('gary', 'gold fish'),
+  ('steve', 'sturgeon');
 
 INSERT INTO 
   cards (value, color)

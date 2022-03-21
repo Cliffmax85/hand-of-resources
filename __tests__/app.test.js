@@ -5,8 +5,9 @@ const app = require('../lib/app');
 const Sock = require('../lib/models/Sock');
 const Game = require('../lib/models/Game');
 const Book = require('../lib/models/Book');
+const Fish = require('../lib/models/Fish');
 const Card = require('../lib/models/Card');
-const { findByID, findById } = require('../lib/models/Card');
+const { findById } = require('../lib/models/Card');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -64,6 +65,12 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get('/api/v1/socks');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a list of fish', async () => {
+    const expected = await Fish.findAll();
+    const res = await request(app).get('/api/v1/fish');
+    expect(res.body).toEqual(expected);
+  })
 
   it('gets a list of books', async () => {
     const expected = await Book.findAll();
