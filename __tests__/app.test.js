@@ -25,6 +25,18 @@ describe('hand-of-resources routes', () => {
       id: expect.any(String), ...expected })
   });
 
+  it('creates a game', async () => {
+    const expected = {
+      name: 'Golden Tee',
+      system: 'Arcade'
+    };
+    const res = await request(app).post('/api/v1/games').send(expected);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...expected })
+  });
+
+
+
   it('gets a list of socks', async () => {
     const expected = await Sock.findAll();
     const res = await request(app).get('/api/v1/socks');
@@ -57,5 +69,5 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected); 
   });
 
-  
+
 });
