@@ -52,10 +52,17 @@ describe('hand-of-resources routes', () => {
 
   it('gets a sock by id', async () => {
     const expected = await Sock.findById(1);
-    const res = await request.agent(app).get(`/api/v1/socks/${expected.id}`);
+    const res = await request(app).get(`/api/v1/socks/${expected.id}`);
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('gets a game by id', async () => {
+    const expected = await Game.findById(2);
+    const res = await request(app).get(`/api/v1/games/${expected.id}`);
+
+    expect(res.body).toEqual({ ...expected });
+  })
 
   it('updates a sock by id', async () => {
     const expected = {
