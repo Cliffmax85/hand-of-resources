@@ -77,6 +77,18 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('updates a game based on id', async () => {
+    const expected = {
+      id: expect.any(String),
+      name: 'super mario 3',
+      system: 'game cube'
+    };
+    const res = await request(app)
+      .patch('/api/v1/games/1')
+      .send({ system: 'game cube' });
+    expect(res.body).toEqual(expected);
+  });
+
   it('deletes a sock based on id', async () => {
     const expected = await Sock.findById(1);
     const res = await request(app).delete(`/api/v1/socks/${expected.id}`);
