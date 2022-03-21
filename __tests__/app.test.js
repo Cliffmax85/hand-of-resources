@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Sock = require('../lib/models/Sock');
 const Game = require('../lib/models/Game');
+const Book = require('../lib/models/Book');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -36,7 +37,14 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...expected })
   });
 
-  
+  it('creates a book', async () => {
+    const expected = {
+      title: 'george of jungle',
+      pages: 8888,
+    };
+    const res = await request(app).post('/api/v1/books').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected })
+  });
 
   it('gets a list of socks', async () => {
     const expected = await Sock.findAll();

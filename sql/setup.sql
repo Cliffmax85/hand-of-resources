@@ -18,14 +18,14 @@ CREATE TABLE games (
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL,
-    pages BIGINT NOT NULL
+    pages INT NOT NULL
 );
 
 INSERT INTO 
   books (title, pages)
 VALUES
-  ('harry gotter', 175)
-  ('star trek wars', 5280)
+  ('harry gotter', 175),
+  ('star trek wars', 5280);
 
 INSERT INTO
   games (name, system)
