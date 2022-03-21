@@ -52,6 +52,12 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('gets a list of books', async () => {
+    const expected = await Book.findAll();
+    const res = await request(app).get('/api/v1/books');
+    expect(res.body).toEqual(expected);
+  })
+
   it('gets a list of games', async () => {
     const expected = await Game.findAll();
     const res = await request(app).get('/api/v1/games');
