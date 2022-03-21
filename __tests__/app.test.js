@@ -149,7 +149,17 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  
+  it('updates a fish by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      name: 'gary',
+      type: 'tuna'
+    };
+    const res = await request(app)
+      .patch('/api/v1/fish/1')
+      .send({ type: 'tuna' });
+    expect(res.body).toEqual(expected);
+  })
 
   it('updates a game based on id', async () => {
     const expected = {
