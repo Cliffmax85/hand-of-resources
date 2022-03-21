@@ -142,13 +142,24 @@ describe('hand-of-resources routes', () => {
       title: 'star trek wars',
       pages: 101010
     };
-    console.log(expected);
     const res = await request(app)
       .patch('/api/v1/books/2')
       .send({ pages: 101010 });
     expect(res.body).toEqual(expected);
-  })
+  });
 
+  it('updates a card based on id', async () => {
+    const expected = {
+      id: expect.any(String),
+      value: '3',
+      color: 'pink'
+    };
+    const res = await request(app)
+      .patch('/api/v1/cards/3')
+      .send({ color: 'pink' });
+    expect(res.body).toEqual(expected);
+  });
+  
   it('deletes a sock based on id', async () => {
     const expected = await Sock.findById(1);
     const res = await request(app).delete(`/api/v1/socks/${expected.id}`);
