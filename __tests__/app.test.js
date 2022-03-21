@@ -220,4 +220,10 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).delete(`/api/v1/cards/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes a fish by id', async () => {
+    const expected = await Fish.findById(1);
+    const res = await request(app).delete(`/api/v1/fish/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  })
 });
